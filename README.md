@@ -112,11 +112,11 @@ Since these all the four Normalisation are followed by our table,the table is in
 
 ![SignUp Mobile view](img/SignupMobileView.png)
 
-![Signup Desktopview](img/SignupPageDesktopView.png)
+![Signup Desktopview](img/SignupDesktopView.png)
 
 ![login mobile view](img/LoginMobileView.png)
 
-![login desktop view](img/LoginPageDesktopView.png)
+![login desktop view](img/LoginDesktopView.png)
 
 - These are the design for the desktop and moblie view signup and login pages where the user can create only one account with one email id .This will be checked at the time of signup .
 
