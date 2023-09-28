@@ -1,45 +1,114 @@
-import React, { useState } from 'react'
-import './authentication.scss'
-import image from './image.jpg';
+import React, { useState } from 'react';
+import './Authentication.scss';
+import Authenticationimage from './images/Authentication.jpg';
+
 const Login = () => {
-  const [email,setEmail] = useState("")
-  const[password,setPassword]= useState("")
-  return (
-    <section className='images'>
-      <section className="image-container">
-        <h3 >Effortlessly track and<br></br> manage your expense</h3>
-      <img src={image} alt="exp"className="image" />
-
-      </section>
-
-    <section className='page'>
-    <section className='form'>
-    <section className='input'>
-     <input type='email'
-     placeholder='E-mail'
-     value={email}
-     onChange={
-      (e)=>{
-     
-      setEmail(e.target.value)
+  const [email, setEmail] = useState("");// State for email
+  const [password, setPassword] = useState(""); // State for password
+  // Function to validate the input data when submit button is clicked.
+  function validateForm() {
+  // Check if the Email field is filled.
+    if (email.length === 0) {
+      alert('Email Address cannot be empty');
+      return;
     }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+     // Check if password follows constraints or not.
+    if (password.length < 8) {
+      alert('Password must contain at least 8 characters.');
+      return;
+    }
+    // Count characters in the password.
+    let countUpperCase = 0;
+    let countLowerCase = 0;
+    let countDigit = 0;
+    let countSpecialCharacters = 0;
+
+    for (let i = 0; i < password.length; i++) {
+      const specialChars = [
+        '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', 
+        '+', '=', '[', '{', ']', '}', ':', ';', '<', '>', 
+      ];
+
+      if (specialChars.includes(password[i])) {
+        countSpecialCharacters++;
+      } else if (!isNaN(password[i] * 1)) {
+        countDigit++;
+      } else {
+        if (password[i] === password[i].toUpperCase()) {
+          countUpperCase++;
+        }
+        if (password[i] === password[i].toLowerCase()) {
+          countLowerCase++;
+        }
+      }
+    }
+
+    if (countLowerCase === 0) {
+      alert('There must be athleast 1 lowercase characters in password');
+      return;
+    }
+
+    if (countUpperCase === 0) {
+      alert('There must be athleast 1 uppercase characters in password');
+      return;
+    }
+
+    if (countDigit === 0) {
+      alert('There must be athleast 1 digit characters in password');
+      return;
+    }
+
+    if (countSpecialCharacters === 0) {
+      alert('There must be athleast 1 special characters in password');
+      return;
+    }
+
+    alert('Form is valid');
   }
-     />
-     <input
-     type='password'
-     placeholder='Password'
-     value={password}
-     onChange={(e)=>{
-      setPassword(e.target.value)
-     }}
-     />
-      <button className="button">Login</button>
-      <a href="#"><span className="account">Forgot Password?</span></a> 
-      <a href="#">Don't have an account? <span className="click-here">Click here</span></a>
+
+  return (
+     /* Container for the entire component */
+    <section className='image-container'>
+      {/* Section for the image and header */}
+      <section className="image">
+        <h3 className="quote">Effortlessly track and<br /> manage your expense</h3>
+          {/*Displaythe Image */}
+        <img src={Authenticationimage} alt="exp" className="image" />
+      </section>
+       {/* Section for the form */}
+      <section className='Authentication-page'>
+        <section className='form'>
+          <section className='form-input'>
+             {/* Input field for Email */}
+            <input 
+              type='email'
+              placeholder='E-mail'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+             {/* Input field for Password */}
+            <input
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+             {/* Login button */}
+            <button type="submit" onClick={validateForm}>Login</button>
+            <a href="#"><span className="account">Forgot Password?</span></a>
+            {/* Link for new users */}
+            <a href="#">Don't have an account? <span className="click-here">Click here</span></a>
+          </section>
+        </section>
+      </section>
     </section>
-    </section>
-    </section>
-    </section>
-  )
+  );
 }
-export default Login
+
+export default Login;

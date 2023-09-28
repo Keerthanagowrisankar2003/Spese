@@ -7,9 +7,7 @@ function App() {
     <Signup/>
     <Login/>
     </>
-
-    
-  );
+    );
 }
 
 export default App;

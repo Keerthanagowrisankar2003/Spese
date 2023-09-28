@@ -36,9 +36,9 @@ Since these all the four Normalisation are followed by our table,the table is in
 
 ## `EXPLANATION`:
 - This ER Diagram consists of the tables `User`,`Income`,- `Expense category`,`Expense`,`Membership` and the `group`.
-- The `user table `consists if the details of the user.
+- The `user table `consists of the details of the user.
 - The `income table` consists of the Income details of a particular user like source of the income,amount,and the date of recieving the income.
-- The `expense table `category consists of the information on the particular category the user have spent.
+- The `expense category table ` consists of the information on the particular category the user have spent.
 - The `expense table `consists of the information of the expense spent by the user on the particular category with the date and the amount they have spent.
 - The membership table  links the table group and the user.
 - The group table allows the users to create groups among the users.
@@ -105,8 +105,8 @@ Since these all the four Normalisation are followed by our table,the table is in
      - Month & Year
 
 
-##`EXPLANATION:`
-- If the user sends the request to login ,the user is able to login in only if the email id and the password matches to the one in the `user table `
+## `EXPLANATION:`
+- If the user sends the request for loging in ,the user is able to login in only if the email id and the password matches to the one in the `user table `
 - Similarly if the user sends a request to see the expense on a particular date,the details will be fetched from the expense table which correseponds to that date and category.
 
 
@@ -122,8 +122,8 @@ Since these all the four Normalisation are followed by our table,the table is in
 
 - The user will be entering the name,email id and the password at the time of login. This will be sent to the database .
 
-- If the email is already registerd alert message will be sent that only one account created by one email id (i.e. Account already exists).
+- If the email is already registerd alert message will be sent that only one account can be created by one email id (i.e. Account already exists).
 
-- Similarly for login .At the time of login the email id entered should be already present in the database and also the password should match with the entered password .
+- Similarly for login,At the time of login the email id entered should be already present in the database and also the password should match with the entered password .
 
-- If anyone of the creteria is not achieved the user will get the alert message as (invalid username or password).
+- If any one of the creteria is not achieved the user will get the alert message as (invalid username or password).
