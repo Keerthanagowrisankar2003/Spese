@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Auuthentication.scss';
+import './Authentication.scss';
 import Authenticationimage from './images/Authentication.jpg';
 
 const Signup = () => {
