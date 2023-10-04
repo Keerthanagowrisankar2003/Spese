@@ -83,12 +83,13 @@ $yellow : #FFD166;
 
 // Button Styling
 .form button {
-    width: 100%; 
+    width: 90%; 
     padding: 8px; 
     border: 1px solid $white; 
     border-radius: 20px; 
     margin-left: 20px; 
-    margin-top: 20px; 
+    margin-top: 20px;
+    margin-right: 20px;
     background-color: $violet; 
     color: $yellow ; 
     cursor: pointer; 
