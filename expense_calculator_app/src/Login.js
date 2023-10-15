@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './Authentication.scss';
+import './Login.scss';
 import Authenticationimage from './images/Authentication.jpg';
+import {Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");// State for email
@@ -73,7 +74,8 @@ const Login = () => {
   }
 
   return (
-     /* Container for the entire component */
+   
+    
     <section className='image-container'>
       {/* Section for the image and header */}
       <section className="image">
@@ -103,11 +105,14 @@ const Login = () => {
             <button type="submit" onClick={validateForm}>Login</button>
             <a href="#"><span className="account">Forgot Password?</span></a>
             {/* Link for new users */}
-            <a href="#">Don't have an account? <span className="click-here">Click here</span></a>
+            <Link to="/signup " >
+                  Don't have an account? <span className="click-here">Click here</span>
+            </Link>
           </section>
         </section>
       </section>
     </section>
+   
   );
 }
 

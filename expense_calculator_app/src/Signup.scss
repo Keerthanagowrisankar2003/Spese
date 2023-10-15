@@ -25,19 +25,21 @@ $yellow : #FFD166;
 }
 
 // Page Container Styling
-.Authentication-page {
+.Signup-page {
     background-color: $violet; 
     border: 2px solid $white; 
     margin: auto; 
     border-radius: 50px; 
     margin-left: 50px; 
     margin-right: 0px; 
-    margin-top: 1px; 
+    margin-top: 0px; 
     margin-bottom: 0px;
+    height: 630px;
 }
 
 // Form Container Styling
 .form {
+   
     max-width: 800px; 
     padding: 0px; 
     margin: 0 auto; 
@@ -50,6 +52,7 @@ $yellow : #FFD166;
     margin-right: 100px; 
     margin-top: 70px;
     margin-bottom: 70px; 
+   height: 440px;
 }
 
 // Input Container Styling
@@ -68,7 +71,7 @@ $yellow : #FFD166;
     border-radius: 5px; 
     margin-bottom: 15px; 
     margin-top: 20px; 
-    margin-left: 27px;
+    margin-left: 30px;
     margin-right: 20px;
     height: 30px; 
     background-color: #E2E2E2; 

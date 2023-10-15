@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './Authentication.scss';
+import './Signup.scss';
 import Authenticationimage from './images/Authentication.jpg';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [firstname, setFirstname] = useState(""); // State for first name
@@ -84,55 +85,56 @@ const Signup = () => {
   }
 
   return (
-    /* Container for the entire component */
-    <section className='image-container'>
-      {/* Section for the image and header */}
-      <section className="image">
-        <h3 className="quote">Effortlessly track and<br /> manage your expense</h3>
-        {/*Display the Image */}
-        <img src={Authenticationimage} alt="exp" className="image" />
-      </section>
+   
+      <section className='image-container'>
+        {/* Section for the image and header */}
+        <section className="image">
+          <h3 className="quote">Effortlessly track and<br /> manage your expense</h3>
+          {/* Display the Image */}
+          <img src={Authenticationimage} alt="exp" className="image" />
+        </section>
 
-      {/* Section for the form */}
-      <section className='Authentication-page'>
-        <section className='form'>
-          <section className='form-input'>
-            {/* Input field for First Name */}
-            <input 
-              type='text'
-              placeholder='First Name'
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-            />
-            {/* Input field for Last Name */}
-            <input 
-              type='text'
-              placeholder='Last Name'
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-            />
-            {/* Input field for Email */}
-            <input 
-              type='email'
-              placeholder='E-mail'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {/* Input field for Password */}
-            <input 
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {/* Signup button */}
-            <button type="submit" onClick={validateForm}>Submit</button>
-            {/* Link for existing users */}
-            <a href="#">Already have an account? <span className="click-here">Click here</span></a>
+        {/* Section for the form */}
+        <section className='Signup-page'>
+          <section className='form'>
+            <section className='form-input'>
+              {/* Input field for First Name */}
+              <input 
+                type='text'
+                placeholder='First Name'
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+              />
+              {/* Input field for Last Name */}
+              <input 
+                type='text'
+                placeholder='Last Name'
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+              />
+              {/* Input field for Email */}
+              <input 
+                type='email'
+                placeholder='E-mail'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {/* Input field for Password */}
+              <input 
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {/* Signup button */}
+              <button type="button" onClick={validateForm}>Submit</button>
+              {/* Link for existing users */}
+              <Link to="/">Already have an account? <span className="click-here">Click here</span></Link>
+            </section>
           </section>
         </section>
       </section>
-    </section>
+   
   );
 }
 
