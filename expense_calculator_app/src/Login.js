@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import './Login.scss';
 import Authenticationimage from './images/Authentication.jpg';
-import {Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState("");// State for email
-  const [password, setPassword] = useState(""); // State for password
-  // Function to validate the input data when submit button is clicked.
-  function validateForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3002/login', { email, password });
+
+      if (response.status === 200) {
+        alert('Login successful');
+       
+      } else {
+        alert('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      alert('Login unsucessfull');
+    }
+  };
+
+  const validateForm = () => {
   // Check if the Email field is filled.
     if (email.length === 0) {
       alert('Email Address cannot be empty');
@@ -71,6 +88,7 @@ const Login = () => {
     }
 
     alert('Form is valid');
+    handleLogin();
   }
 
   return (

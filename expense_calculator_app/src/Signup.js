@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Signup.scss';
 import Authenticationimage from './images/Authentication.jpg';
 import { Link } from 'react-router-dom';
-import axiosInstance from './axiosInstance';
+import axios from 'axios';
 
 const Signup = () => {
   const [firstname, setFirstname] = useState(""); // State for first name
@@ -82,20 +82,22 @@ const Signup = () => {
       return;
     }
 
-    axiosInstance.post('/signup', {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: password
-    })
-    .then(response => {
-      console.log('Form data sent successfully:', response.data);
-      alert('Form data sent successfully');
-    })
-    .catch(error => {
-      console.error('Error sending form data:', error);
-      alert('Error sending form data',error);
-    });
+    {
+      axios.post('http://localhost:3002/Signup', {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password
+      })
+      .then(response => {
+        console.log('Form data sent successfully:', response.data);
+        alert('Form data sent successfully');
+      })
+      .catch(error => {
+        console.error('Error sending form data:', error);
+        alert('Error sending form data',error);
+      });
+    }
   }
 
   return (
@@ -152,4 +154,4 @@ const Signup = () => {
   );
 }
 
-export default Signup;
+export default Signup; 
