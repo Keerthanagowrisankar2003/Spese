@@ -1,0 +1,475 @@
+$white: white;
+$whitesmoke: whitesmoke;
+$black:black;
+$blue: #007bff ; 
+$green : #4caf50;
+$violet: #9D26D6;
+$red:#e74c3c;
+$dark-green:#2c3e50;
+$grey: #b1b1b1;
+
+/* Add or update the styles in your HomePage.scss file */
+
+.update-modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Add any other styles as needed */
+
+  .task-input {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+
+    input {
+      padding: 5px; /* Increase the padding for larger input boxes */
+      border: 1px solid $white;
+      border-radius: 4px;
+      font-size: 13.5px; /* Increase the font size for better readability */
+      width: 90%;
+      padding: 10px;
+      border: 1px solid  $white;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+      
+    }
+
+    button {
+      padding: 12px;
+      background-color: $blue;
+      color: $white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+}
+
+i.fas.fa-arrow-up,
+i.fas.fa-arrow-down {
+  color: $white;  // Ensure the icon color is set to white or another contrasting color
+}
+
+
+nav {
+  background-color: $whitesmoke;  // Using direct color value
+  color: $black;  // Using direct color value
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      display: inline;
+      margin-right: 90px;
+      margin-left: 40px;
+
+      &.logo {
+        img {
+          max-width: 10px; /* Adjust as needed */
+        }
+      }
+    }
+  }
+}
+
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+
+  &-content {
+    display: none;
+    position: absolute;
+    background-color: $white;  // Using direct color value
+    min-width: 1px;
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    color: $black;  // Using direct color value
+
+    li a {
+      color: $black;  // Using direct color value
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    & .dropdown-content {
+      display: block;
+    }
+
+    & .dropdown-content2 {
+      &-hover {
+        display: block;
+      }
+    }
+  }
+}
+
+.navbar2 {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+  .search-input {
+    flex-grow: 1;
+    margin: 0 20px; // Adjust the margin as needed
+    color: $black;
+    
+
+    input {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid  $white;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color:$blue; // Adjust the focus color as needed
+      }
+    }
+  }
+  .checkbox-list {
+    list-style: none;
+    padding: 0;
+  
+    li {
+      margin-bottom: 8px;
+  
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+  
+        input {
+          margin-right: 8px;
+          appearance: none; 
+          width: 16px; 
+          height: 16px; 
+          border: 1px solid $white; 
+          background-color: transparent; 
+          outline: none; /* Remove focus outline */
+          
+  
+          &:checked {
+           
+
+            &::before {
+              content: '\2713'; /* Unicode character for a checkmark */
+              display: block;
+              width: 16px;
+              height: 16px;
+              text-align: center;
+              line-height: 16px;
+              font-size: 12px;
+              color: $black;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  .apply-button {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: $green;
+    color:  $white;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: $green;
+    }
+  }
+  display: flex;
+  align-items: center;
+
+  .logo {
+    img {
+      max-width: 180px;
+      height: auto;
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 25px;//reduce the gape between icons
+      cursor: pointer;
+      color: $dark-green;  // Using direct color value
+
+      i {
+        margin-right: 5px;
+      }
+    }
+
+    .dropdown {
+      position: relative;
+      color: $dark-green;  // Using direct color value
+
+      &:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color:  $white;  // Using direct color value
+        box-shadow: 0 8px 16px $black;
+        z-index: 1;
+        list-style: none;
+        padding: 5px;
+        margin: 0;
+
+        li {
+          padding: 5px 10px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .right-content {
+    margin-left: auto;
+
+    li {
+      cursor: pointer;
+      color: $dark-green;  // Using direct color value
+
+      i {
+        margin-right: 5px;
+      }
+    }
+    .filter-dropdown {
+      position: relative;
+    
+      span {
+        cursor: pointer;
+        color: $white;
+    
+        i {
+          margin-left: 5px;
+        }
+      }
+    
+      ul {
+        display: none;
+        position: absolute;
+        background-color: $white;
+        box-shadow: 0px 8px 16px 0px $black;
+        z-index: 1;
+        list-style-type: none;
+        padding: 5px;
+        margin: 0;
+        left: 0;
+        top: 100%;
+    
+        li {
+          padding: 5px 10px;
+          cursor: pointer;
+    
+          label {
+            display: flex;
+            align-items: center;
+    
+            input {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/* Dropdown 1 */
+.dropdown-content {
+  box-shadow: 0px 8px 16px 0px $black;
+}
+
+/* Dropdown 2 */
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: $white;  // Using direct color value
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px $black;
+  z-index: 1;
+  left: 100%;
+  top: 0;
+
+  &:hover {
+    display: block;
+  }
+}
+
+// Rest of the code...
+
+// content.scss
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-title {
+  text-align: center;
+}
+
+.task-input {
+  display: flex;
+  margin-bottom: 100px;
+
+  input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+  }
+}
+
+/* content1.scss */
+
+.task-input input {
+  width: 20px; /* Adjust the width value as needed */
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: $blue;
+  color: $white;
+  border: none;
+  cursor: pointer;
+}
+
+/* content1.scss */
+
+
+.task-table {
+  width: 50%;
+  margin: 0px auto;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid  $white; /* Add border property to set the border for the table */
+
+  th, td {
+    border: 1px solid  $white;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+
+  /* Table Header */
+  /* Table Header */
+.header-cell {
+  background-color: $violet;
+  color: $white;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+
+  i {
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $white;
+  }
+
+  i.fas.fa-arrow-up::before,
+  i.fas.fa-arrow-down::before {
+    content: '\f062'; /* Unicode character for up-arrow */
+    font-family: 'Font Awesome 5 Free'; /* Font family for Font Awesome */
+    font-weight: 900; /* Font weight for Font Awesome 900 (solid) */
+    margin-right: 5px;
+  }
+  
+  i.fas.fa-arrow-down::before {
+    content: '\f063'; /* Unicode character for down-arrow */
+  }
+}  
+
+
+/* Rest of your styles */
+
+/* Table Content */
+td {
+  background-color: $white;
+  color: $dark-green;
+  border-radius: 0 0 10px 10px;
+}
+
+.remove-button, .update-button {
+  background-color: $red;
+  color: $dark-green;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $grey;
+  }
+}
+
+.update-button {
+  background-color: $blue;
+}
+
+}
+
+/* Rest of your styles */
+
+
+.total-expense {
+  position: fixed;
+  top: 40px;
+  right: 10px;
+  width: 100px; /* Adjust the width to create a circular shape */
+  height: 100px; /* Adjust the height to create a circular shape */
+  background: radial-gradient(circle at 50% 50%,  $violet, $violet); /* Radial gradient for a circular background */
+  border-radius: 50%; /* Create a circular shape */
+  box-shadow: 0 4px 8px $black; /* Subtle box shadow for depth */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: $white; /* White text for better contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font style */
+  font-size: 14px; /* Adjusted font size */
+  line-height: 1.2; /* Improved line height for readability */
+  cursor: pointer;
+  
+}
+
+/* Add a hover effect for interaction */
+.total-expense:hover {
+  background: radial-gradient(circle at 50% 50%, $green,$green); /* Darker green on hover */
+}

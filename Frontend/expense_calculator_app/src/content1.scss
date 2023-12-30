@@ -1,0 +1,23 @@
+$border-color: #ccc;
+$table-background: #f9f9f9;
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th, td {
+    border: 1px solid $border-color;
+    padding: 10px;
+    text-align: center;
+  }
+
+  th {
+    background-color: $table-background;
+  }
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}

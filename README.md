@@ -8,7 +8,7 @@
 - The users can also create group among themselves with their family or friends which helps to track the expenses of the total family throughout the particular period of time.
 
 ## ER DIAGRAM
-## ![ER DIAGRAM FOR THE EXPENDITURE CALCULATOR](img/ExpenditureCalculatorErDiagram.png)
+## ![ER DIAGRAM FOR THE EXPENDITURE CALCULATOR](Visual_Assets/ExpenditureCalculatorErDiagram.png)
 ## `NORMALISATION:`
 - ### 1NF:
     - ✔ Each table has its own `primary key`
@@ -110,13 +110,13 @@ Since these all the four Normalisation are followed by our table,the table is in
 - Similarly if the user sends a request to see the expense on a particular date,the details will be fetched from the expense table which correseponds to that date and category.
 
 
-![SignUp Mobile view](img/SignupMobileView.png)
+![SignUp Mobile view](Visual_Assets/SignupMobileView.png)
 
-![Signup Desktopview](img/SignupDesktopView.png)
+![Signup Desktopview](Visual_Assets/SignupDesktopView.png)
 
-![login mobile view](img/LoginMobileView.png)
+![login mobile view](Visual_Assets/LoginMobileView.png)
 
-![login desktop view](img/LoginDesktopView.png)
+![login desktop view](Visual_Assets/LoginDesktopView.png)
 
 - These are the design for the desktop and moblie view signup and login pages where the user can create only one account with one email id .This will be checked at the time of signup .
 

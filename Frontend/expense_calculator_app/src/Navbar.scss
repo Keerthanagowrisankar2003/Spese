@@ -1,0 +1,36 @@
+$primary-bg-color: #333;
+$text-color: black;
+$nav-padding: 1px;
+$li-margin-right: 10px;
+$li-margin-left: 30px;
+$icon-size: 1.5em;
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+nav {
+  background-color: $primary-bg-color;
+  padding: $nav-padding;
+  color: $text-color;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+      display: inline;
+      margin-right: $li-margin-right;
+      margin-left: $li-margin-left;
+
+      a {
+        color: $text-color;
+        text-decoration: none;
+      }
+
+      i.fas {
+        font-size: $icon-size; /* Adjust the icon size if needed */
+      }
+    }
+  }
+}
