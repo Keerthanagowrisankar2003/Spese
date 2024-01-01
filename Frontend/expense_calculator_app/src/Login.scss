@@ -3,8 +3,11 @@
 
 // Color Variables
 $violet: #9D26D6;
-$white: #ccc;
+$white: #ffffff;
 $yellow: #FFD166;
+$black:black;
+$grey:#E2E2E2;
+
 
 // Image Container Styling
 .image-container {
@@ -19,7 +22,13 @@ $yellow: #FFD166;
   // Header Styling
   .quote {
     font-family: 'Poppins', sans-serif;
+    text-align: center;
   }
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  
 }
 
 // Page Container Styling
@@ -45,7 +54,7 @@ $yellow: #FFD166;
     border: 2px solid $white;
     border-radius: 10px;
     margin-right: 400px;
-    background-color: white;
+    background-color: $white;
     margin-left: 100px;
     margin-right: 100px;
     margin-top: 70px;
@@ -70,13 +79,13 @@ $yellow: #FFD166;
       margin-left: 27px;
       margin-right: 20px;
       height: 30px;
-      background-color: #E2E2E2;
+      background-color:$grey;
 
       // Input Placeholder Styling
       &::placeholder {
         font-family: 'Sensation', sans-serif;
         font-weight: normal;
-        color: black;
+        color: $black;
       }
     }
 
@@ -112,7 +121,7 @@ $yellow: #FFD166;
       display: block;
       margin-top: 10px;
       text-align: center;
-      color: black;
+      color:$black;
       font-weight: bold;
       text-decoration: none;
 

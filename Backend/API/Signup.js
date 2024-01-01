@@ -104,7 +104,7 @@ const Signup = async (firstname, lastname, email, password, res) => {
                                         connection.release();
                                       });
                                     } else {
-                                      console.log('User and expense tables created successfully');
+                                     
                                       res.status(200).json({ message: 'User signed up successfully' });
                                       connection.release();
                                     }

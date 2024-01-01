@@ -36,7 +36,7 @@ const DeleteExpense = ( req,res,expense_id) => {
             res.status(500).json({ error: 'Internal server error' });
           } else {
             res.status(200).json({ message: 'Expense deleted successfully' });
-            console.log('Expense deteted with expense id: ',expense_id);
+           
           }
         }
       );

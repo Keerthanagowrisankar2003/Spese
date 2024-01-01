@@ -20,11 +20,11 @@ const secretKey = 'your_secret_key';
 
 const AddExpense = async (item, date, amount, category,req,res) => {
   token = req.header('Authorization').replace('Bearer ', ''); // Retrieve the token from headers
-  console.log('Token received on the server:', token);
+ 
   try {
     const decoded = jwt.verify(token, secretKey);
     const userId = decoded.userid;
-    console.log('UserId:', userId);
+   
    
 
     // Check if the category exists in the category table
@@ -34,7 +34,7 @@ const AddExpense = async (item, date, amount, category,req,res) => {
     );
 
     let categoryId;
-    console.log('Category Result:', categoryResult);
+   
 
     if (categoryResult.length > 0) {
       categoryId = categoryResult[0].categoryid;
@@ -44,7 +44,7 @@ const AddExpense = async (item, date, amount, category,req,res) => {
         `INSERT INTO expense_category_${userId} (userid,category) VALUES (?,?)`,
         [userId,category]
       );
-      console.log('Insert Result:', insertResult);
+     
       categoryId = insertResult.insertId;
     }
 

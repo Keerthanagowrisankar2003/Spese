@@ -24,12 +24,6 @@ const UpdateExpense = async(expense_id,item,date,amount,req,res) => {
   try {
     const decoded = jwt.verify(token, secretKey);
     const userId = decoded.userid;
-    // console.log('Updating expense with the following values:');
-    // console.log('UserID:', userId);
-    // console.log('Expense ID:', expense_id);
-    // console.log('Item:', item);
-    // console.log('Date:', date);
-    // console.log('Amount:', amount);
 
     pool.query(
       `UPDATE expense_${userId} SET item = ?, date = ?, amount = ? WHERE expense_id = ?`,
@@ -40,7 +34,7 @@ const UpdateExpense = async(expense_id,item,date,amount,req,res) => {
           res.status(500).json({ error: 'Internal server error' });
         } else {
           res.status(200).json({ message: 'Expense updated successfully' });
-          console.log('Expense updated successfully');
+         
         }
       }
     );

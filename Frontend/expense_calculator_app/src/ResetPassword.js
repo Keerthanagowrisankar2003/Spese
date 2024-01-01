@@ -3,20 +3,17 @@
 import React, { useState } from 'react';
 import axiosInstance from './axios';
 import './ResetPassword.scss';
-
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+;
 const ResetPassword = ({ email }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [inputEmail, setInputEmail] = useState(email || ''); // Initialize with the provided email
+  const navigate = useNavigate();
 
   const handleResetPassword = async () => {
     try {
-      // Add validation for password and confirmPassword
-      // if (newPassword !== confirmPassword) {
-      //   // Handle password mismatch
-      //   console.error('Password mismatch');
-      //   return;
-      // }
 
       // Log email and newPassword for debugging
       console.log('Email:', inputEmail); // Use inputEmail instead of email
@@ -28,6 +25,20 @@ const ResetPassword = ({ email }) => {
       if (response.status === 200) {
         // Password reset successful, you can redirect or display a success message
         console.log('Password reset successful');
+        toast.success('Password Reset Sucessful!', {
+          position: "top-center",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          onClose: () => {
+            // Navigate to /HomePage after the toast is closed
+            navigate('/');
+          },
+        });
       } else {
         console.error('Failed to reset password');
       }
@@ -37,6 +48,8 @@ const ResetPassword = ({ email }) => {
   };
 
   return (
+    <div class="reset-password-wrapper">
+ 
     <div className="reset-password-container">
       <h3 className="reset-password-title">Reset Password</h3>
       <input
@@ -64,6 +77,8 @@ const ResetPassword = ({ email }) => {
         Reset Password
       </button>
     </div>
+    </div>
+  
   );
 };
 

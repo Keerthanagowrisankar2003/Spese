@@ -23,7 +23,7 @@ app.post('/login', async (req, res) => {
    // res.status(200).json({ message: login });
   } catch (error) {
    // res.status(401).json({ error }\
-   console.log('error during login')
+  
     return 
   }
 });
@@ -36,7 +36,7 @@ app.post('/Signup', async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during signup')
+  
     return 
   }
 });
@@ -50,7 +50,7 @@ app.post('/AddExpense', async (req, res) => {
     const UserExpense = await AddExpense (item, date, amount, category,req,res);
    
   } catch (error) {
-   console.log('error during adding the expense',error)
+   
     return 
   }
 });
@@ -63,7 +63,7 @@ app.post('/GetExpense',  async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during fetching the expenses')
+  
     return 
   }
 });
@@ -77,7 +77,7 @@ app.post('/UpdateExpense',  async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during updation')
+  
     return 
   }
 });
@@ -91,7 +91,7 @@ app.post('/DeleteExpense',  async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during deleting the expense')
+   
     return 
   }
 });
@@ -105,7 +105,7 @@ app.post('/SearchItem',  async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during Searching the item')
+   
     return 
   }
 });
@@ -119,7 +119,7 @@ app.post('/SendMail',  async (req, res) => {
    
   } catch (error) {
    
-   console.log('error during Searching the item')
+  
     return 
   }
 });
@@ -134,7 +134,7 @@ app.post('/ResetPassword', async(req, res) => {
    
   } catch (error) {
    
-   console.log('error during reseting the password')
+ 
     return 
   }
   

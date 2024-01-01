@@ -32,7 +32,7 @@ const ResetPassword = async (email, newPassword,req, res) => {
         'UPDATE user SET password = ? WHERE emailid = ?',
         [hashedPassword, email],
         (error, results) => {
-          console.log('Password Updated'); // Log the SQL query
+          
          
       
           if (error) {

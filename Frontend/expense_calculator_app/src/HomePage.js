@@ -6,6 +6,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link,useNavigate } from 'react-router-dom';
 
 
 class HomePage extends Component {
@@ -59,32 +60,17 @@ class HomePage extends Component {
     });
   };
   
-  //filter.....................
+ 
 
-//send mail --------------------------------------------------------------------------------------------
-sendEmail = async () => {
-  const { userEmail } = this.props;
 
-  try {
-    const response = await axiosInstance.post('/SendEmail', { userEmail });
-
-    if (response.status === 200) {
-      console.log('Email request sent successfully');
-    } else {
-      console.error('Failed to send email request');
-    }
-  } catch (error) {
-    console.error('Error sending email request:', error);
-  }
-};
 
 //calcukate monthly expense
 
 calculateTotalExpenseForCurrentMonth = () => {
   const { tasks } = this.state;
 
-  // Check if tasks is an array
-  if (!Array.isArray(tasks)) {
+  // Check if tasks is an array and has elements
+  if (!Array.isArray(tasks) || tasks.length === 0) {
     return "0.00";
   }
 
@@ -95,20 +81,23 @@ calculateTotalExpenseForCurrentMonth = () => {
 
   // Filter tasks for the current month and year
   const currentMonthTasks = tasks.filter((task) => {
-    // Check if task is defined and has a 'date' property
-    return task && task.date && new Date(task.date).getMonth() + 1 === currentMonth && new Date(task.date).getFullYear() === currentYear;
+    return (
+      task &&
+      task.date &&
+      new Date(task.date).getMonth() + 1 === currentMonth &&
+      new Date(task.date).getFullYear() === currentYear
+    );
   });
 
   // Calculate the total expense for the current month
-  const totalExpense = currentMonthTasks.reduce((total, task) => total + parseFloat(task.amount), 0);
+  const totalExpense = currentMonthTasks.reduce(
+    (total, task) => total + parseFloat(task.amount),
+    0
+  );
 
-  if (totalExpense > 10000) {
-    // Send email alert if the total expense exceeds 10,000 rupees
-    this.sendEmail();
-  }
-
-  return totalExpense.toFixed(2); // Assuming amount is a string, convert it to a float and fix the decimal places
+  return totalExpense.toFixed(2);
 };
+
 
  
   
@@ -188,17 +177,13 @@ generateAndSavePDF = async (tasks) => {
     const pdf = new jsPDF();
 
     // Set up the PDF content
-    pdf.text('Expense Report', 14, 15);
-    <br></br>
-
-    if (!pdf.autoTable) {
-      console.error('Error: autoTable method not found in jsPDF instance');
-      return;
-    }
+    const tableData = tasks.map((task) => [task.item, new Date(task.date).toLocaleDateString(), task.amount, task.category]);
+    pdf.text('Expense Report', 14, 10);
 
     pdf.autoTable({
+     
       head: [['Item', 'Date', 'Amount', 'Category']],
-      body: tasks.map((task) => [task.item, new Date(task.date).toLocaleDateString(), task.amount, task.category]),
+      body: tableData,
     });
 
     // Save the PDF file
@@ -338,6 +323,24 @@ generateAndSavePDF = async (tasks) => {
       // alert('All fields must be filled');
       return;
     }
+    const currentDate = new Date();
+  const selectedDate = new Date(newDate);
+
+  // Check if the selected date is in the future
+  if (selectedDate > currentDate) {
+    // Display an error message
+    toast.error('Future date is not allowed', {
+      position: "top-center",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    return;
+  }
   
     const newTask = {
       item: newItem,
@@ -549,6 +552,7 @@ generateAndSavePDF = async (tasks) => {
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
+          limit:3,
           draggable: true,
           progress: undefined,
           theme: "light",
@@ -620,19 +624,16 @@ generateAndSavePDF = async (tasks) => {
   };
  
 
-  render () {
+  render() {
     const totalExpenseForCurrentMonth = this.calculateTotalExpenseForCurrentMonth(this.state.tasks || []);
     const { sortColumn, sortDirection, tasks } = this.state;
     const { uniqueCategories, selectedCategories } = this.state;
-
-  return (
-   
-    <nav id="navbar1">
-       <div className="app-container">
-          {/* <button className="add-button" onClick={this.openModal}>
-            Add Item
-          </button> */}
-          <br></br>
+  
+    return (
+      <nav id="navbar1">
+        <div className="app-container">
+          <br />
+  
           {this.state.isModalOpen && (
             <div className="modal">
               <div className="modal-content">
@@ -675,146 +676,158 @@ generateAndSavePDF = async (tasks) => {
               </div>
             </div>
           )}
-          
-        </div>
-        {this.state.isUpdateModalOpen && (
-  <div className="modal update-modal">
-      <span className="close" onClick={this.closeUpdateModal}>
-        &times;
-      </span>
-      <div className="task-input">
-        <input
-          type="text"
-          placeholder="Item"
-          name="newItem"
-          value={this.state.newItem}
-          onChange={this.handleInputChange}
-        />
-        <input
-          type="date"
-          placeholder="Date"
-          name="newDate"
-          value={this.state.newDate}
-          onChange={this.handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Amount"
-          name="newAmount"
-          value={this.state.newAmount}
-          onChange={this.handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Category"
-          name="newCategory"
-          value={this.state.newCategory}
-          onChange={this.handleInputChange}
-        />
-        <button className="update-button" onClick={this.updateTask}>
-          Update item
-        </button>
-      </div>
-    </div>
   
-)}
-
-   <div className="navbar2">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
-      </div>
-      <ul> 
-        <li onClick={this.openModal}><i className="fas fa-plus"></i> Add</li> 
-      </ul>
-      <div className="search-input">
-      <input
-  type="text"
-  placeholder="Search..."
-  name="searchQuery"
-  value={this.state.searchQuery}
-  onChange={this.handleInputChange}
-/>
-  </div>
- 
-      <ul className='right-content'>
-     
-      <li className="dropdown">
-  <span>
-    <i className="fas fa-filter"> Filter</i>
-  </span>
-  <ul className="dropdown-content checkbox-list">
-    {uniqueCategories.map((category) => (
-      <li key={category}>
-        <label>
-          <input
-            type="checkbox"
-            value={category}
-            checked={selectedCategories.includes(category)}
-            onChange={() => this.handleCategoryFilter(category)}
-          />
-          {category}
-        </label>
-      </li>
-    ))}
-    <li onClick={this.applyCategoryFilters}>
-      <button className="apply-button">Apply Filters</button>
-    </li>
-  </ul>
-           </li>
-        <li onClick={this.handleShare}>
-          <i className="fas fa-share"></i> Share
-        </li>
-      </ul>
-      <div className="total-expense">
-            <span>You Spent Rs.{totalExpenseForCurrentMonth} for this month </span>
-          </div>
-      
-     <br></br>
-       
+          {this.state.isUpdateModalOpen && (
+            <div className="modal update-modal">
+              <span className="close" onClick={this.closeUpdateModal}>
+                &times;
+              </span>
+              <div className="task-input">
+                <input
+                  type="text"
+                  placeholder="Item"
+                  name="newItem"
+                  value={this.state.newItem}
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="date"
+                  placeholder="Date"
+                  name="newDate"
+                  value={this.state.newDate}
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Amount"
+                  name="newAmount"
+                  value={this.state.newAmount}
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name="newCategory"
+                  value={this.state.newCategory}
+                  onChange={this.handleInputChange}
+                />
+                <button className="update-button" onClick={this.updateTask}>
+                  Update item
+                </button>
+              </div>
+            </div>
+          )}
+  
         </div>
+  
+        <div className="navbar2">
+          <div className="logo">
+            <img src={logo} alt="Logo" />
+          </div>
+  
+          <ul>
+            <li onClick={this.openModal}>
+              <i className="fas fa-plus"></i> Add
+            </li>
+          </ul>
+  
+          <div className="search-input">
+            <input
+              type="text"
+              placeholder="Search..."
+              name="searchQuery"
+              value={this.state.searchQuery}
+              onChange={this.handleInputChange}
+            />
+          </div>
+  
+          <ul className="right-content">
+            <li className="dropdown">
+              <i className="fas fa-filter"> Filter</i>
+              <ul className="dropdown-content checkbox-list">
+                {uniqueCategories.map((category) => (
+                  <li key={category}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={category}
+                        checked={selectedCategories.includes(category)}
+                        onChange={() => this.handleCategoryFilter(category)}
+                      />
+                      {category}
+                    </label>
+                  </li>
+                ))}
+                <li onClick={this.applyCategoryFilters}>
+                  <button className="apply-filter-button">Apply Filters</button>
+                </li>
+              </ul>
+            </li>
+            <li onClick={this.handleShare}>
+              <i className="fas fa-share"></i> Share
+            </li>
+            <li className="dropdown" >
+    <i className="fas fa-sign-out-alt"></i> <Link to="/"> Logout</Link>
+  </li>
+          </ul>
+  
+          <div className="total-expense">
+            <span>You Spent<span className="expense"> Rs.{totalExpenseForCurrentMonth} </span>for this month </span>
+          </div>
+  
+          <br />
+  
+        </div>
+  
         <table className="task-table">
-        <thead>
-          <tr>
-           <th className="header-cell" onClick={() => this.handleSort('item')}>
-  Item <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
-</th>
-
-            <th className="header-cell" onClick={() => this.handleSort('date')}>
-              Date<i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
-            </th>
-            <th className="header-cell" onClick={() => this.handleSort('amount')}>
-              Amount <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
-            </th>
-            <th className="header-cell" onClick={() => this.handleSort('category')}>
-              Category <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
-            </th>
-            <th className="header-cell">Action</th>
-          </tr>
-        </thead>
-            <tbody>
-  {(this.state.tasks?.length > 0 ? this.state.tasks : []).map((task, index) => (
-    <tr key={index}>
-      <td>{task && task.item}</td>
-      <td>{task && new Date(task.date).toLocaleDateString()}</td>
-      <td>{task && task.amount}</td>
-      <td>{task && task.category}</td>
-      <td>
-        <button
-          className="remove-button"
-          onClick={() => this.removeTask(index)}
-        >
-          Remove
-        </button>
-        <button className="update-button" onClick={() => this.openUpdateModal(index)}> Update</button>
-      </td>
+          <thead>
+            <tr>
+              <th className="header-cell" onClick={() => this.handleSort('item')}>
+                Item <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
+              </th>
+              <th className="header-cell" onClick={() => this.handleSort('date')}>
+                Date<i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
+              </th>
+              <th className="header-cell" onClick={() => this.handleSort('amount')}>
+                Amount <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
+              </th>
+              <th className="header-cell" onClick={() => this.handleSort('category')}>
+                Category <i className={`fa fa-arrow-${sortDirection === 'asc' ? 'up' : 'down'}`}></i>
+              </th>
+              <th className="header-cell">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+  {tasks?.length > 0 ? (
+    tasks.map((task, index) => (
+      <tr key={index}>
+        <td>{task && task.item}</td>
+        <td>{task && new Date(task.date).toLocaleDateString()}</td>
+        <td>{task && task.amount}</td>
+        <td>{task && task.category}</td>
+        <td>
+          <button
+            className="remove-button"
+            onClick={() => this.removeTask(index)}
+          >
+            Remove
+          </button>
+          <button className="update-button" onClick={() => this.openUpdateModal(index)}> Update</button>
+        </td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="5">No tasks available</td>
     </tr>
-  ))}
+  )}
 </tbody>
 
-          </table>
-         
-    </nav>
-  );
-}}
+        </table>
+  
+      </nav>
+    );
+  }
+  }
 
-export default HomePage;
+  export default HomePage;

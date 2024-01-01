@@ -7,15 +7,14 @@ $violet: #9D26D6;
 $red:#e74c3c;
 $dark-green:#2c3e50;
 $grey: #b1b1b1;
+$yellow: #FFD166;
 
-/* Add or update the styles in your HomePage.scss file */
 
 .update-modal {
   position: fixed;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Add any other styles as needed */
 
   .task-input {
     display: flex;
@@ -23,16 +22,15 @@ $grey: #b1b1b1;
     gap: 1px;
 
     input {
-      padding: 5px; /* Increase the padding for larger input boxes */
+      padding: 5px;
       border: 1px solid $white;
       border-radius: 4px;
-      font-size: 13.5px; /* Increase the font size for better readability */
-      width: 90%;
+      font-size: 13.5px;
+      width: 100px;;
       padding: 10px;
-      border: 1px solid  $white;
+      border: 1px solid $white;
       border-radius: 5px;
       transition: border-color 0.3s;
-      
     }
 
     button {
@@ -49,13 +47,13 @@ $grey: #b1b1b1;
 
 i.fas.fa-arrow-up,
 i.fas.fa-arrow-down {
-  color: $white;  // Ensure the icon color is set to white or another contrasting color
+  color: $white;  
 }
 
 
 nav {
-  background-color: $whitesmoke;  // Using direct color value
-  color: $black;  // Using direct color value
+  background-color: $whitesmoke;  
+  color: $black;  
 
   ul {
     list-style: none;
@@ -71,7 +69,7 @@ nav {
 
       &.logo {
         img {
-          max-width: 10px; /* Adjust as needed */
+          max-width: 10px; 
         }
       }
     }
@@ -79,40 +77,6 @@ nav {
 }
 
 
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-
-  &-content {
-    display: none;
-    position: absolute;
-    background-color: $white;  // Using direct color value
-    min-width: 1px;
-    z-index: 1;
-    list-style-type: none;
-    padding: 0;
-    top: 100%;
-    left: 0;
-    color: $black;  // Using direct color value
-
-    li a {
-      color: $black;  // Using direct color value
-      text-decoration: none;
-    }
-  }
-
-  &:hover {
-    & .dropdown-content {
-      display: block;
-    }
-
-    & .dropdown-content2 {
-      &-hover {
-        display: block;
-      }
-    }
-  }
-}
 
 .navbar2 {
   display: flex;
@@ -120,7 +84,7 @@ nav {
     align-items: center;
   .search-input {
     flex-grow: 1;
-    margin: 0 20px; // Adjust the margin as needed
+    margin: 0 20px; 
     color: $black;
     
 
@@ -134,9 +98,42 @@ nav {
 
       &:focus {
         outline: none;
-        border-color:$blue; // Adjust the focus color as needed
+        border-color:$blue;
       }
     }
+  }
+  .total-expense {
+    margin-left: auto; /* Push the monthly expense to the right */
+    margin-right: 20px; /* Add some right margin for spacing */
+    display: flex;
+    align-items: center;
+    width: 114px; /* Adjust the width to create a circular shape */
+    height: 114px; /* Adjust the height to create a circular shape */
+    background: radial-gradient(circle at 50% 50%,  $violet, $violet); /* Radial gradient for a circular background */
+    border-radius: 50%; /* Create a circular shape */
+    box-shadow: 0 4px 8px $black; /* Subtle box shadow for depth */
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: $white; 
+    font-size: 14px; 
+    line-height: 1.2; 
+    cursor: pointer;
+    
+
+      .expense {
+     
+        color: $yellow;
+        font-size: 15px;
+        font-weight: bold;
+      }
+        
+  }
+  .total-expense:hover {
+    background: radial-gradient(circle at 50% 50%, $green,$green); /* Darker green on hover */
   }
   .checkbox-list {
     list-style: none;
@@ -155,9 +152,9 @@ nav {
           appearance: none; 
           width: 16px; 
           height: 16px; 
-          border: 1px solid $white; 
+          border: 1px solid $black; 
           background-color: transparent; 
-          outline: none; /* Remove focus outline */
+          outline: none; 
           
   
           &:checked {
@@ -180,7 +177,7 @@ nav {
   }
   
   
-  .apply-button {
+  .apply-filter-button {
     margin-top: 8px;
     padding: 8px;
     background-color: $green;
@@ -207,20 +204,23 @@ nav {
     display: flex;
     margin: 0;
     padding: 0;
-
+// nav bar icons
     li {
-      margin: 0 25px;//reduce the gape between icons
+      margin: 0 22px;
       cursor: pointer;
-      color: $dark-green;  // Using direct color value
-
+      font-size: 18px;
+      // font-weight: bolder;
+    
+    
       i {
         margin-right: 5px;
+      
       }
     }
 
     .dropdown {
       position: relative;
-      color: $dark-green;  // Using direct color value
+      color: $dark-green;  
 
       &:hover .dropdown-content {
         display: block;
@@ -229,7 +229,7 @@ nav {
       .dropdown-content {
         display: none;
         position: absolute;
-        background-color:  $white;  // Using direct color value
+        background-color:  $white;  
         box-shadow: 0 8px 16px $black;
         z-index: 1;
         list-style: none;
@@ -249,7 +249,7 @@ nav {
 
     li {
       cursor: pointer;
-      color: $dark-green;  // Using direct color value
+      color: $black;    
 
       i {
         margin-right: 5px;
@@ -258,19 +258,10 @@ nav {
     .filter-dropdown {
       position: relative;
     
-      span {
-        cursor: pointer;
-        color: $white;
-    
-        i {
-          margin-left: 5px;
-        }
-      }
-    
       ul {
         display: none;
         position: absolute;
-        background-color: $white;
+        background-color: $black;
         box-shadow: 0px 8px 16px 0px $black;
         z-index: 1;
         list-style-type: none;
@@ -293,6 +284,7 @@ nav {
           }
         }
       }
+      
     
       &:hover {
         ul {
@@ -303,57 +295,32 @@ nav {
   }
 }
 
-/* Dropdown 1 */
-.dropdown-content {
-  box-shadow: 0px 8px 16px 0px $black;
-}
-
-/* Dropdown 2 */
-.dropdown-content2 {
-  display: none;
-  position: absolute;
-  background-color: $white;  // Using direct color value
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px $black;
-  z-index: 1;
-  left: 100%;
-  top: 0;
-
-  &:hover {
-    display: block;
-  }
-}
-
-// Rest of the code...
-
-// content.scss
-
-.app-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.app-title {
-  text-align: center;
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .task-input {
   display: flex;
-  margin-bottom: 100px;
+  flex-direction: row;
+  gap: 1px;
 
   input {
-    flex: 1;
-    margin-right: 10px;
+    
+    padding: 5px;
+    border: 1px solid $white;
+    border-radius: 4px;
+    font-size: 13.5px;
+    width: 115px;
     padding: 10px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    transition: border-color 0.3s;
   }
 }
 
-/* content1.scss */
-
-.task-input input {
-  width: 20px; /* Adjust the width value as needed */
-}
 
 .add-button {
   padding: 10px 20px;
@@ -363,11 +330,10 @@ nav {
   cursor: pointer;
 }
 
-/* content1.scss */
 
 
 .task-table {
-  width: 50%;
+  width: 100%;
   margin: 0px auto;
   border-collapse: collapse;
   overflow: hidden;
@@ -375,14 +341,14 @@ nav {
   border: 1px solid  $white; /* Add border property to set the border for the table */
 
   th, td {
-    border: 1px solid  $white;
+    border: 1px solid  $grey;
     padding: 15px;
     text-align: center;
     transition: background-color 0.3s ease;
     border-radius: 10px;
   }
 
-  /* Table Header */
+  
   /* Table Header */
 .header-cell {
   background-color: $violet;
@@ -412,9 +378,6 @@ nav {
   }
 }  
 
-
-/* Rest of your styles */
-
 /* Table Content */
 td {
   background-color: $white;
@@ -431,6 +394,7 @@ td {
   border-radius: 5px;
   margin-right: 5px;
   transition: background-color 0.3s ease;
+  font-family: sans-serif;
 
   &:hover {
     background-color: $grey;
@@ -441,35 +405,4 @@ td {
   background-color: $blue;
 }
 
-}
-
-/* Rest of your styles */
-
-
-.total-expense {
-  position: fixed;
-  top: 40px;
-  right: 10px;
-  width: 100px; /* Adjust the width to create a circular shape */
-  height: 100px; /* Adjust the height to create a circular shape */
-  background: radial-gradient(circle at 50% 50%,  $violet, $violet); /* Radial gradient for a circular background */
-  border-radius: 50%; /* Create a circular shape */
-  box-shadow: 0 4px 8px $black; /* Subtle box shadow for depth */
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  color: $white; /* White text for better contrast */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font style */
-  font-size: 14px; /* Adjusted font size */
-  line-height: 1.2; /* Improved line height for readability */
-  cursor: pointer;
-  
-}
-
-/* Add a hover effect for interaction */
-.total-expense:hover {
-  background: radial-gradient(circle at 50% 50%, $green,$green); /* Darker green on hover */
 }
