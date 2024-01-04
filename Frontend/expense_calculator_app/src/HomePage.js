@@ -766,7 +766,7 @@ const handleInputChange = async (event) => {
   
         <ul className="right-content">
           <li className="dropdown">
-              <i className="fas fa-filter"> Filter</i>
+              <i className="fas fa-filter"></i> Filter
               <ul className="dropdown-content checkbox-list">
                 {uniqueCategories.map((category) => (
                   <li key={category}>
