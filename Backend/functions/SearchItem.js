@@ -1,31 +1,28 @@
-const express = require('express');
+const { extractToken } = require('./ExtractJwtToken');
+const importDependencies = require('./Imports');
+const { express, bodyParser, cors, mysql, jwt } = importDependencies();
 const router7 = express.Router();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mysql = require('mysql2');
-const jwt = require('jsonwebtoken');
 
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'server_database',
-  password: 'Keerthanag@2003',
-  database: 'server_database',
+  host: 'sql12.freesqldatabase.com',
+  user: 'sql12675401',
+  password: 'JppSA6RyfR',
+  database: 'sql12675401',
   connectionLimit: 10,
 });
 
 router7.use(bodyParser.json());
 router7.use(cors());
 const secretKey = 'your_secret_key';
-
 // Search endpoint
 const SearchItem = async (req, res) => {
-    const token = req.header('Authorization').replace('Bearer ', '');
+  const token = extractToken(req); 
   
     try {
       const decoded = jwt.verify(token, secretKey);
       const userId = decoded.userid;
   
-      if (!userId) {
+      if (userId==null) {
         return res.status(400).json({ error: 'User ID is required.' });
       }
   

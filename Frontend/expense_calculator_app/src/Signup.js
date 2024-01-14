@@ -7,10 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link,useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const [firstname, setFirstname] = useState(""); // State for first name
-  const [lastname, setLastname] = useState(""); // State for last name
-  const [email, setEmail] = useState(""); // State for email
-  const [password, setPassword] = useState(""); // State for password
+  const [firstname, setFirstname] = useState(""); 
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState(""); 
+  const [password, setPassword] = useState(""); 
   const navigate = useNavigate();
 
   // Function to validate the input data when submit button is clicked.
@@ -18,13 +18,6 @@ const Signup = () => {
     // Check if the First Name is an Empty string or not.
     if (firstname.length === 0) {
       toast.error('First Name can not be empty', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('First Name can not be empty');
@@ -34,13 +27,6 @@ const Signup = () => {
     // Check if the Email field is filled.
     if (email.length === 0) {
       toast.error('Email Address can not be empty', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Email Address can not be empty');
@@ -50,13 +36,6 @@ const Signup = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error('Please enter a valid email address', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Please enter a valid email address');
@@ -66,13 +45,6 @@ const Signup = () => {
     // Check if password follows constraints or not.
     if (password.length < 8) {
       toast.error('Password must contain at least 8 characters.', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Password must contain at least 8 characters.');
@@ -107,13 +79,6 @@ const Signup = () => {
 
     if (countLowerCase === 0) {
       toast.error('Invalid Form, 0 lowercase characters in password', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Invalid Form, 0 lowercase characters in password');
@@ -122,13 +87,6 @@ const Signup = () => {
 
     if (countUpperCase === 0) {
       toast.error('Invalid Form, 0 uppercase characters in password', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Invalid Form, 0 uppercase characters in password');
@@ -137,13 +95,6 @@ const Signup = () => {
 
     if (countDigit === 0) {
       toast.error('Invalid Form, 0 digit characters in password', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Invalid Form, 0 digit characters in password');
@@ -152,13 +103,6 @@ const Signup = () => {
 
     if (countSpecialCharacters === 0) {
       toast.error('Invalid Form, 0 special characters in password', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Invalid Form, 0 special characters in password');
@@ -175,13 +119,6 @@ const Signup = () => {
       .then(response => {
         console.log('Form data sent successfully:', response.data);
         toast.success('Signup successfull!', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "light",
           onClose: () => {
             // Navigate to /HomePage after the toast is closed
@@ -192,13 +129,6 @@ const Signup = () => {
       .catch(error => {
         console.error('Error sending form data:', error);
         toast.error('Error sending form data', {
-          position: "top-center",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
           });
         // alert('Error sending form data',error);

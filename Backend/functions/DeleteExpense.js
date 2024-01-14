@@ -1,31 +1,24 @@
-const express = require('express');//node framework
+const { extractToken } = require('./ExtractJwtToken');
+const importDependencies = require('./Imports');
+const { express, bodyParser, cors, mysql, jwt } = importDependencies();
 const router6 = express.Router();//node router 
-const bodyParser = require('body-parser');
-const cors = require('cors');//connect two different resources for data transfer
-const mysql = require('mysql2');// import backend
-const jwt = require('jsonwebtoken');//import jwt token
 
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'server_database',
-  password: 'Keerthanag@2003',
-  database: 'server_database',
+  host: 'sql12.freesqldatabase.com',
+  user: 'sql12675401',
+  password: 'JppSA6RyfR',
+  database: 'sql12675401',
   connectionLimit: 10,
 });
-
 
 router6.use(bodyParser.json());
 router6.use(cors());
 const secretKey = 'your_secret_key';
-
 const DeleteExpense = ( req,res,expense_id) => {
-  
- 
-  token = req.header('Authorization').replace('Bearer ', ''); // Retrieve the token from headers
+  const token = extractToken(req); 
     try {
       const decoded = jwt.verify(token, secretKey);
       const userId = decoded.userid;
-  
       // Perform the deletion in the database
       pool.query(
         `DELETE FROM expense_${userId} WHERE expense_id = ?`,
@@ -45,5 +38,4 @@ const DeleteExpense = ( req,res,expense_id) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
-
   module.exports = { router6, DeleteExpense };

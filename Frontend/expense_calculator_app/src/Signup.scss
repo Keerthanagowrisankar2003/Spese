@@ -1,14 +1,11 @@
 // Font Import
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
 // Color Variables
 $violet : #9D26D6;
 $white :  #ffffff;    
 $yellow : #FFD166; 
 $black : black; 
 $white : #E2E2E2;
-
-
 // Image Container Styling
 .image-container {
     // Image Styling
@@ -19,14 +16,12 @@ $white : #E2E2E2;
     display: flex;    
     align-items: center; 
 }
-
 // Header Styling
 .image-container{
   .quote{
     font-family: 'Poppins', sans-serif; 
   }
 }
-
 // Page Container Styling
 .Signup-page {
     background-color: $violet; 
@@ -97,17 +92,14 @@ $white : #E2E2E2;
     font-size: 20px; 
     font-family: 'Sensation', sans-serif; 
 }
-
 // Click Here Link Styling
 .click-here {
     color: $yellow ; 
 }
-
 // Link Styling
 .account {
     color: $violet; 
 }
-
 // Additional Styling for Links
 .form a {
     display: block; 
@@ -117,17 +109,11 @@ $white : #E2E2E2;
     font-weight: bold; 
     text-decoration: none; 
 }
-
 // Hover Styling for Links
 .form a:hover {
     text-decoration: underline; 
 }
-
 }
-
-
-
-
 // Image Styling
 .image {
     max-width: 400px;  

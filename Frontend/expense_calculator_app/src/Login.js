@@ -3,7 +3,7 @@ import './Login.scss';
 import Authenticationimage from './images/Authentication.jpg';
 import { Link,useNavigate } from 'react-router-dom'; // Change here
 import axiosInstance from './axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from './ResetPassword';
 
@@ -12,7 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [resetPassword, setResetPassword] = useState(false);
+  const [resetPassword] = useState(false);
  
  
 
@@ -27,14 +27,6 @@ const Login = () => {
         localStorage.setItem('token', token);
   
         toast.success('Login successful!', {
-          position: "top-center",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
           onClose: () => {
             // Navigate to /HomePage after the toast is closed
             navigate('/HomePage');
@@ -42,13 +34,6 @@ const Login = () => {
         });
       }else {
         toast.error('Invalid email or password', {
-          position: "top-center",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
           });
         // alert('Invalid email or password');
@@ -56,13 +41,6 @@ const Login = () => {
     } catch (error) {
       console.error('Error during login:', error);
       toast.error('Invalid email or password', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Login unsuccessful');
@@ -72,13 +50,6 @@ const Login = () => {
   const validatePassword = () => {
     if (password.length < 8) {
       toast.error('Password must contain at least 8 characters.', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Password must contain at least 8 characters.');
@@ -113,13 +84,6 @@ const Login = () => {
 
     if (countLowerCase === 0 || countUpperCase === 0 || countDigit === 0 || countSpecialCharacters === 0) {
       toast.error('Password must contain at least one lowercase, one uppercase, one digit, and one special character.', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Password must contain at least one lowercase, one uppercase, one digit, and one special character.');
@@ -133,13 +97,6 @@ const Login = () => {
     // Check if the Email field is filled.
     if (email.length === 0) {
       toast.error('Email Address cannot be empty', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Email Address cannot be empty');
@@ -149,13 +106,6 @@ const Login = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error('Please enter a valid email address', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Please enter a valid email address');
@@ -179,7 +129,7 @@ const Login = () => {
       </section>
       {/* Section for the form */}
       <section className='Authentication-page'>
-        <section className='form'>
+        <section className='login-form'>
           <section className='form-input'>
             {/* Input field for Email */}
             <input

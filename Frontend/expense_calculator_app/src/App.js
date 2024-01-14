@@ -1,17 +1,16 @@
 import Login from './Login.js';
 import Signup from './Signup.js';
-import Navbar from './Navbar';
 import HomePage from './HomePage';
 import ResetPassword from './ResetPassword.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <Router>
       <ToastContainer
-         position="top-right"
-          autoClose={5000}
+         position="top-center"
+          autoClose={500}
           limit={3}
          hideProgressBar={false}
          newestOnTop={false}
@@ -25,7 +24,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/navbar" element={<Navbar />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
        

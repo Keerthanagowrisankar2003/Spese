@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
 $white: white;
 $whitesmoke: whitesmoke;
 $black:black;
@@ -8,8 +10,7 @@ $red:#e74c3c;
 $dark-green:#2c3e50;
 $grey: #b1b1b1;
 $yellow: #FFD166;
-
-
+$icon-size: 1.5em;
 .update-modal {
   position: fixed;
   top: 20%;
@@ -49,9 +50,7 @@ i.fas.fa-arrow-up,
 i.fas.fa-arrow-down {
   color: $white;  
 }
-
-
-nav {
+.navbar2 {
   background-color: $whitesmoke;  
   color: $black;  
 
@@ -66,6 +65,14 @@ nav {
       display: inline;
       margin-right: 90px;
       margin-left: 40px;
+      a {
+        color: $black;
+        text-decoration: none;
+      }
+
+      i.fas {
+        font-size: $icon-size; /* Adjust the icon size if needed */
+      }
 
       &.logo {
         img {
@@ -75,9 +82,6 @@ nav {
     }
   }
 }
-
-
-
 .navbar2 {
   display: flex;
     justify-content: space-between;
@@ -86,8 +90,6 @@ nav {
     flex-grow: 1;
     margin: 0 20px; 
     color: $black;
-    
-
     input {
       width: 90%;
       padding: 10px;
@@ -122,15 +124,12 @@ nav {
     font-size: 14px; 
     line-height: 1.2; 
     cursor: pointer;
-    
-
       .expense {
      
         color: $yellow;
         font-size: 15px;
         font-weight: bold;
-      }
-        
+      }    
   }
   .total-expense:hover {
     background: radial-gradient(circle at 50% 50%, $green,$green); /* Darker green on hover */
@@ -155,11 +154,7 @@ nav {
           border: 1px solid $black; 
           background-color: transparent; 
           outline: none; 
-          
-  
           &:checked {
-           
-
             &::before {
               content: '\2713'; /* Unicode character for a checkmark */
               display: block;
@@ -175,8 +170,6 @@ nav {
       }
     }
   }
-  
-  
   .apply-filter-button {
     margin-top: 8px;
     padding: 8px;
@@ -184,21 +177,18 @@ nav {
     color:  $white;
     border: none;
     cursor: pointer;
-  
     &:hover {
       background-color: $green;
     }
   }
   display: flex;
   align-items: center;
-
   .logo {
     img {
       max-width: 180px;
       height: auto;
     }
   }
-
   ul {
     list-style: none;
     display: flex;
@@ -210,8 +200,6 @@ nav {
       cursor: pointer;
       font-size: 18px;
       // font-weight: bolder;
-    
-    
       i {
         margin-right: 5px;
       

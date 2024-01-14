@@ -139,13 +139,6 @@ const handleInputChange = async (event) => {
     // Check if both start and end dates are provided
     if (!shareStartDate || !shareEndDate) {
       toast.error('Please enter valid start and end dates', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
       return;
@@ -172,25 +165,11 @@ const handleInputChange = async (event) => {
       await generateAndSavePDF(filteredTasks);
   
       toast.success('PDF generated and saved successfully!', {
-        position: "top-center",
-        autoClose: 500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "light",
       });
     } catch (error) {
       console.error('Error generating PDF:', error);
       toast.error('Failed to generate PDF', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
     }
@@ -216,13 +195,6 @@ const handleInputChange = async (event) => {
     } catch (error) {
       console.error('Error generating PDF:', error);
       toast.error('Failed to generate PDF', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         });
       // alert('Failed to generate PDF');
@@ -309,13 +281,6 @@ const handleInputChange = async (event) => {
     // Check if the amount is a valid non-negative number
     if (isNaN(newAmount) || parseFloat(newAmount) < 0) {
       toast.error('Invalid amount type', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
       return;
@@ -323,13 +288,6 @@ const handleInputChange = async (event) => {
 
     if (newItem.trim() === '' || newDate === '' || newAmount.trim() === '' || newCategory.trim() === '') {
       toast.error('All fields must be filled', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
       return;
@@ -341,13 +299,6 @@ const handleInputChange = async (event) => {
     // Check if the selected date is in the future
     if (selectedDate > currentDate) {
       toast.error('Future date is not allowed', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
       return;
@@ -366,13 +317,6 @@ const handleInputChange = async (event) => {
 
       if (response.status === 201) {
         toast.success('Item added successfully', {
-          position: "top-center",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "light",
         });
         // Update the tasks state with the new task
@@ -386,26 +330,12 @@ const handleInputChange = async (event) => {
       } else {
        
         toast.error('Failed to add item', {
-          position: "top-center",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
         });
       }
     } catch (error) {
       console.error('Error adding item:', error);
       toast.error('Failed to add item', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
     }
@@ -470,13 +400,6 @@ const handleInputChange = async (event) => {
 
         if (response.status === 200) {
           toast.success('Item updated successfully', {
-            position: "top-center",
-            autoClose: 500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
             theme: "light",
           });
 
@@ -490,13 +413,6 @@ const handleInputChange = async (event) => {
           setIsUpdateModalOpen(false);
         } else {
           toast.error('Failed to update', {
-            position: "top-center",
-            autoClose: false,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
             theme: "colored",
           });
 
@@ -505,13 +421,6 @@ const handleInputChange = async (event) => {
       } else {
         console.error(`Invalid index or _id at index ${selectedTaskIndex}`);
         toast.error('Failed to update item', {
-          position: "top-center",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
         });
 
@@ -520,13 +429,6 @@ const handleInputChange = async (event) => {
     } catch (error) {
       console.error('Error updating item:', error);
       toast.error('Failed to update item', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
 
@@ -550,14 +452,6 @@ const handleInputChange = async (event) => {
 
       if (response.status === 200) {
         toast.success('Item removed successfully', {
-          position: "top-center",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          limit: 3,
-          draggable: true,
-          progress: undefined,
           theme: "light",
         });
 
@@ -566,13 +460,6 @@ const handleInputChange = async (event) => {
         setTasks(updatedTasks);
       } else {
         toast.error('Failed to remove item', {
-          position: "top-center",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
         });
         // alert('Failed to remove item');
@@ -580,13 +467,6 @@ const handleInputChange = async (event) => {
     } catch (error) {
       console.error('Error removing item:', error);
       toast.error('Failed to remove item', {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
       });
       // alert('Failed to remove item');

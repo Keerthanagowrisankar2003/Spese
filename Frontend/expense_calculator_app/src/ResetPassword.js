@@ -1,5 +1,3 @@
-// ResetPassword.jsx
-
 import React, { useState } from 'react';
 import axiosInstance from './axios';
 import './ResetPassword.scss';
@@ -49,7 +47,6 @@ const ResetPassword = ({ email }) => {
 
   return (
     <div class="reset-password-wrapper">
- 
     <div className="reset-password-container">
       <h3 className="reset-password-title">Reset Password</h3>
       <input
