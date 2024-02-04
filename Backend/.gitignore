@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled binary addons
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependency directories
+lib/
+
+# React build output
+build/
+dist/
+
+# MySQL database
+*.sql
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.test
+.env.development
+
+# OS and editor generated files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
